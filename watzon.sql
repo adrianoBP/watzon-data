@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 17, 2018 at 02:23 PM
+-- Generation Time: Jan 17, 2018 at 02:38 PM
 -- Server version: 5.6.13
 -- PHP Version: 5.4.17
 
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS `contact` (
   `id_customer` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `surname` varchar(255) NOT NULL,
-  `birthday` date NOT NULL,
+  `birthdate` date NOT NULL,
   `reference` int(11) NOT NULL,
   `role` varchar(20) NOT NULL,
   `version` int(11) NOT NULL,
