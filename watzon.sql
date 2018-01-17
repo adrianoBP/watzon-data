@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 17, 2018 at 02:38 PM
+-- Generation Time: Jan 17, 2018 at 02:48 PM
 -- Server version: 5.6.13
 -- PHP Version: 5.4.17
 
@@ -31,7 +31,7 @@ USE `watzon`;
 CREATE TABLE IF NOT EXISTS `city` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `zip` int(11) NOT NULL,
+  `zip` varchar(7) NOT NULL,
   `province_state` varchar(255) NOT NULL,
   `country` varchar(255) NOT NULL,
   `version` int(11) NOT NULL,
