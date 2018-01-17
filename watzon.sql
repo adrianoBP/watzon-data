@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 17, 2018 at 02:48 PM
+-- Generation Time: Jan 17, 2018 at 03:24 PM
 -- Server version: 5.6.13
 -- PHP Version: 5.4.17
 
@@ -50,11 +50,9 @@ CREATE TABLE IF NOT EXISTS `contact` (
   `name` varchar(255) NOT NULL,
   `surname` varchar(255) NOT NULL,
   `birthdate` date NOT NULL,
-  `reference` int(11) NOT NULL,
   `role` varchar(20) NOT NULL,
   `version` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `reference` (`reference`),
   KEY `id_customer` (`id_customer`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -102,10 +100,12 @@ CREATE TABLE IF NOT EXISTS `customer_product` (
 
 CREATE TABLE IF NOT EXISTS `info_reference` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_contact` int(11) NOT NULL,
   `link` varchar(255) NOT NULL,
   `type` enum('phone_number','email') NOT NULL,
   `version` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `id_customer` (`id_contact`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -131,8 +131,7 @@ CREATE TABLE IF NOT EXISTS `product` (
 -- Constraints for table `contact`
 --
 ALTER TABLE `contact`
-  ADD CONSTRAINT `rel5` FOREIGN KEY (`id_customer`) REFERENCES `customer` (`id`),
-  ADD CONSTRAINT `rel1` FOREIGN KEY (`reference`) REFERENCES `info_reference` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `rel5` FOREIGN KEY (`id_customer`) REFERENCES `customer` (`id`);
 
 --
 -- Constraints for table `customer`
@@ -146,6 +145,12 @@ ALTER TABLE `customer`
 ALTER TABLE `customer_product`
   ADD CONSTRAINT `rel3` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `rel2` FOREIGN KEY (`id_customer`) REFERENCES `customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `info_reference`
+--
+ALTER TABLE `info_reference`
+  ADD CONSTRAINT `rel6` FOREIGN KEY (`id_contact`) REFERENCES `contact` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
