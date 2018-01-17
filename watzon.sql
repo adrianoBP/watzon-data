@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 17, 2018 at 03:24 PM
+-- Generation Time: Jan 17, 2018 at 04:11 PM
 -- Server version: 5.6.13
 -- PHP Version: 5.4.17
 
@@ -28,6 +28,7 @@ USE `watzon`;
 -- Table structure for table `city`
 --
 
+DROP TABLE IF EXISTS `city`;
 CREATE TABLE IF NOT EXISTS `city` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -36,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `city` (
   `country` varchar(255) NOT NULL,
   `version` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14571 ;
 
 -- --------------------------------------------------------
 
@@ -44,6 +45,7 @@ CREATE TABLE IF NOT EXISTS `city` (
 -- Table structure for table `contact`
 --
 
+DROP TABLE IF EXISTS `contact`;
 CREATE TABLE IF NOT EXISTS `contact` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_customer` int(11) NOT NULL,
@@ -62,6 +64,7 @@ CREATE TABLE IF NOT EXISTS `contact` (
 -- Table structure for table `customer`
 --
 
+DROP TABLE IF EXISTS `customer`;
 CREATE TABLE IF NOT EXISTS `customer` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -81,15 +84,16 @@ CREATE TABLE IF NOT EXISTS `customer` (
 -- Table structure for table `customer_product`
 --
 
+DROP TABLE IF EXISTS `customer_product`;
 CREATE TABLE IF NOT EXISTS `customer_product` (
-  `id_customer` int(11) NOT NULL,
-  `id_product` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
   `price` double NOT NULL,
   `currency` varchar(20) NOT NULL,
   `version` int(11) NOT NULL,
-  PRIMARY KEY (`id_customer`,`id_product`),
-  KEY `id_product` (`id_product`),
-  KEY `id_customer` (`id_customer`)
+  PRIMARY KEY (`customer_id`,`product_id`),
+  KEY `id_product` (`product_id`),
+  KEY `id_customer` (`customer_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -98,6 +102,7 @@ CREATE TABLE IF NOT EXISTS `customer_product` (
 -- Table structure for table `info_reference`
 --
 
+DROP TABLE IF EXISTS `info_reference`;
 CREATE TABLE IF NOT EXISTS `info_reference` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_contact` int(11) NOT NULL,
@@ -114,6 +119,7 @@ CREATE TABLE IF NOT EXISTS `info_reference` (
 -- Table structure for table `product`
 --
 
+DROP TABLE IF EXISTS `product`;
 CREATE TABLE IF NOT EXISTS `product` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `code` varchar(255) NOT NULL,
@@ -143,8 +149,8 @@ ALTER TABLE `customer`
 -- Constraints for table `customer_product`
 --
 ALTER TABLE `customer_product`
-  ADD CONSTRAINT `rel3` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `rel2` FOREIGN KEY (`id_customer`) REFERENCES `customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `rel3` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `rel2` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `info_reference`
