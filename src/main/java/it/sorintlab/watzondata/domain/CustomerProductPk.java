@@ -20,11 +20,9 @@ public class CustomerProductPk implements Serializable {
 
 	@Override
 	public String toString() {
-		return Integer.toString(product.getId()); 
+		return Integer.toString(product.getId());
 	}
-	
-	
-	
+
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
@@ -41,42 +39,35 @@ public class CustomerProductPk implements Serializable {
 		return serialVersionUID;
 	}
 
-//	@Override
-//	public int hashCode() {
-//		final int prime = 31;
-//		int result = 1;
-//		result = prime * result + ((customer == null) ? 0 : customer.hashCode());
-//		result = prime * result + ((product == null) ? 0 : product.hashCode());
-//		return result;
-//	}
-//
-//	@Override
-//	public boolean equals(Object obj) {
-//		if (this == obj)
-//			return true;
-//		if (obj == null)
-//			return false;
-//		if (getClass() == obj.getClass())
-//		{
-//			CustomerProductPk other = (CustomerProductPk) obj;
-//		if (customer == null) {
-//			if (other.customer != null)
-//				return false;
-//		} else if (!customer.equals(other.customer))
-//			return false;
-//		if (product == null) {
-//			if (other.product != null)
-//				return false;
-//		} else if (!product.equals(other.product))
-//			return false;
-//		return true;
-//		}
-//		else if(obj.getClass() == String.class) {
-//			int temp = Integer.parseInt((obj).toString());
-//			return temp==product.getId();
-//			
-//		}else
-//			return false;
-//		}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((customer == null) ? 0 : customer.hashCode());
+		result = prime * result + ((product == null) ? 0 : product.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CustomerProductPk other = (CustomerProductPk) obj;
+		if (customer == null) {
+			if (other.customer != null)
+				return false;
+		} else if (!customer.equals(other.customer))
+			return false;
+		if (product == null) {
+			if (other.product != null)
+				return false;
+		} else if (!product.equals(other.product))
+			return false;
+		return true;
+	}
 
 }
