@@ -11,7 +11,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
+
 @Entity
+@Where(clause = "deleted<>1")
+@SQLDelete(sql = "UPDATE customer c SET c.deleted=1 WHERE c.id=?")
 public class Customer {
 
 	@Id
