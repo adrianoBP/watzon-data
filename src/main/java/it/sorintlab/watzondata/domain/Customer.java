@@ -25,7 +25,7 @@ public class Customer {
 	private String website;
 	@Column(name = "taxcode")
 	private String taxCode;
-	@OneToMany(mappedBy="id.customer")
+	@OneToMany(mappedBy = "id.customer")
 	private List<CustomerProduct> products;
 	@Version
 	private int version;

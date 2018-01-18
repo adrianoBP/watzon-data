@@ -20,11 +20,9 @@ public class CustomerProductPk implements Serializable {
 
 	@Override
 	public String toString() {
-		return Integer.toString(product.getId()); 
+		return Integer.toString(product.getId());
 	}
-	
-	
-	
+
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
