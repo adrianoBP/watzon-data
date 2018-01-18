@@ -2,6 +2,7 @@ package it.sorintlab.watzondata.domain;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,9 +22,10 @@ public class Customer {
 	@ManyToOne
 	private City city;
 	private String note;
-	private String webSite;
+	private String website;
+	@Column(name = "taxcode")
 	private String taxCode;
-	@OneToMany
+	@OneToMany(mappedBy="id.customer")
 	private List<CustomerProduct> products;
 	@Version
 	private int version;
@@ -71,11 +73,11 @@ public class Customer {
 	}
 
 	public String getWebSite() {
-		return webSite;
+		return website;
 	}
 
-	public void setWebSite(String webSite) {
-		this.webSite = webSite;
+	public void setWebSite(String website) {
+		this.website = website;
 	}
 
 	public String getTaxCode() {
@@ -114,7 +116,7 @@ public class Customer {
 		result = prime * result + ((street == null) ? 0 : street.hashCode());
 		result = prime * result + ((taxCode == null) ? 0 : taxCode.hashCode());
 		result = prime * result + version;
-		result = prime * result + ((webSite == null) ? 0 : webSite.hashCode());
+		result = prime * result + ((website == null) ? 0 : website.hashCode());
 		return result;
 	}
 
@@ -161,10 +163,10 @@ public class Customer {
 			return false;
 		if (version != other.version)
 			return false;
-		if (webSite == null) {
-			if (other.webSite != null)
+		if (website == null) {
+			if (other.website != null)
 				return false;
-		} else if (!webSite.equals(other.webSite))
+		} else if (!website.equals(other.website))
 			return false;
 		return true;
 	}
