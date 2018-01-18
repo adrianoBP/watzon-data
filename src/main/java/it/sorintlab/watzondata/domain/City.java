@@ -14,7 +14,7 @@ public class City {
 	private int id;
 	private String name;
 	private String zip;
-	private String province_state;
+	private String provinceState;
 	private String country;
 	@Version
 	private int version;
@@ -44,11 +44,11 @@ public class City {
 	}
 
 	public String getProvince_state() {
-		return province_state;
+		return provinceState;
 	}
 
 	public void setProvince_state(String province_state) {
-		this.province_state = province_state;
+		this.provinceState = province_state;
 	}
 
 	public String getCountry() {
@@ -74,7 +74,7 @@ public class City {
 		result = prime * result + ((country == null) ? 0 : country.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((province_state == null) ? 0 : province_state.hashCode());
+		result = prime * result + ((provinceState == null) ? 0 : provinceState.hashCode());
 		result = prime * result + version;
 		result = prime * result + ((zip == null) ? 0 : zip.hashCode());
 		return result;
@@ -101,10 +101,10 @@ public class City {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (province_state == null) {
-			if (other.province_state != null)
+		if (provinceState == null) {
+			if (other.provinceState != null)
 				return false;
-		} else if (!province_state.equals(other.province_state))
+		} else if (!provinceState.equals(other.provinceState))
 			return false;
 		if (version != other.version)
 			return false;
@@ -115,5 +115,7 @@ public class City {
 			return false;
 		return true;
 	}
+	
+	
 
 }

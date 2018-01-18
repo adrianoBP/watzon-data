@@ -27,6 +27,8 @@ public class Customer {
 	private List<CustomerProduct> products;
 	@Version
 	private int version;
+	
+//	private List<Contact> contacts;
 
 	public int getId() {
 		return id;
