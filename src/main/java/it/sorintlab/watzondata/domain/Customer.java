@@ -14,6 +14,8 @@ import javax.persistence.Version;
 @Entity
 public class Customer {
 
+	
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
