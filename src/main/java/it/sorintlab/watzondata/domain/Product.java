@@ -4,7 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Version;
+
+import org.hibernate.annotations.Table;
 
 @Entity
 public class Product {
@@ -17,7 +20,7 @@ public class Product {
 	private String description;
 	@Version
 	private int version;
-
+	
 	public int getId() {
 		return id;
 	}

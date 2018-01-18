@@ -6,7 +6,6 @@ import javax.persistence.Version;
 
 @Entity
 public class CustomerProduct {
-
 	@EmbeddedId
 	private CustomerProductPk id;
 	private double price;
@@ -20,6 +19,18 @@ public class CustomerProduct {
 
 	public void setId(CustomerProductPk id) {
 		this.id = id;
+	}
+
+	public void setCustomer(Customer customer) {
+		id.setCustomer(customer);
+	}
+
+	public void setProduct(Product product) {
+		id.setProduct(product);
+	}
+	
+	public Product getProduct() {
+		return id.getProduct();
 	}
 
 	public double getPrice() {
