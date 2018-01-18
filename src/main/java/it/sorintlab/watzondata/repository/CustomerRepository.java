@@ -20,11 +20,5 @@ public interface CustomerRepository extends PagingAndSortingRepository<Customer,
 	public Page<Customer> findByNameContaining(@Param("name") String name, Pageable paging);
 	
 	
-	@Modifying
-	@Query("update Customer c set c.deleted=true where c.id=?")
-	@Override
-	void delete(Integer id);
-
-	
 	
 }
