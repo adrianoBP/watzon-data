@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 17, 2018 at 04:11 PM
+-- Generation Time: Jan 18, 2018 at 02:33 PM
 -- Server version: 5.6.13
 -- PHP Version: 5.4.17
 
@@ -69,14 +69,15 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `street` varchar(255) NOT NULL,
-  `city` int(11) NOT NULL,
+  `city_id` int(11) NOT NULL,
   `note` text NOT NULL,
   `website` varchar(255) NOT NULL,
   `taxcode` varchar(255) NOT NULL,
+  `deleted` tinyint(1) NOT NULL,
   `version` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `city` (`city`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  KEY `city` (`city_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
@@ -125,9 +126,10 @@ CREATE TABLE IF NOT EXISTS `product` (
   `code` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
+  `deleted` tinyint(1) NOT NULL,
   `version` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Constraints for dumped tables
@@ -143,14 +145,14 @@ ALTER TABLE `contact`
 -- Constraints for table `customer`
 --
 ALTER TABLE `customer`
-  ADD CONSTRAINT `rel4` FOREIGN KEY (`city`) REFERENCES `city` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `rel4` FOREIGN KEY (`city_id`) REFERENCES `city` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `customer_product`
 --
 ALTER TABLE `customer_product`
-  ADD CONSTRAINT `rel3` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `rel2` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `rel2` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `rel3` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `info_reference`
