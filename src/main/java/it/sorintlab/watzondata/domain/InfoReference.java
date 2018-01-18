@@ -10,11 +10,16 @@ import javax.persistence.Version;
 @Entity
 public class InfoReference {
 
+	public static enum Type{
+		phone_number,
+		email
+	}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String link;
-	private String type;
+	private Type type;
 
 	@ManyToOne
 	private Contact contact;
@@ -37,11 +42,11 @@ public class InfoReference {
 		this.link = link;
 	}
 
-	public String getType() {
+	public Type getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(Type type) {
 		this.type = type;
 	}
 
