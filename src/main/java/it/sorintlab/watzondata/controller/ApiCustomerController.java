@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,6 +36,11 @@ public class ApiCustomerController {
 		ArrayList<Customer> temp = new ArrayList<>();
 		customerRepository.findAll().forEach(temp::add);
 		return temp.stream().map(c -> new String("/api/customers/" + c.getId())).collect(Collectors.toList());
+	}
+	
+	@GetMapping(value = "/customers/{id}")
+	public ApiCustomer getCustomer(@PathVariable("id") int id){
+		return ApiCustomer.fromDomain(customerRepository.findOne(id));
 	}
 	
 
