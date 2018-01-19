@@ -23,6 +23,7 @@ public class ApiCustomer {
 	private String website;
 	private String taxCode;
 	private List<Integer> products;
+	private List<Integer> contacts;
 	
 	public int getId() {
 		return id;
@@ -99,8 +100,14 @@ public class ApiCustomer {
 		frontend.provinceState= domain.getCity().getProvince_state();
 		frontend.zip = domain.getCity().getZip();
 		frontend.products = domain.getProducts().stream().map(prod -> prod.getId().getProduct().getId()).collect(Collectors.toList());
+		frontend.contacts = domain.getContacts().stream().map(cont -> cont.getId()).collect(Collectors.toList());
 		return frontend;
 		
+	}
+	
+	public static List<String> getAllProducts(Customer findProd){
+		
+		return null;
 	}
 	
 	//public static String toUrl(Customer customer)

@@ -9,7 +9,7 @@ import it.sorintlab.watzondata.backend.InfoReference;
 public class APIContact {
 	
 	private int id;
-//	private int idCustomer;
+//    private int idCustomer;
 	private String name;
 	private String surname;
 	private LocalDate birthDate;
@@ -116,5 +116,6 @@ public class APIContact {
 		
 		return contact;
 	}
+	
 
 }

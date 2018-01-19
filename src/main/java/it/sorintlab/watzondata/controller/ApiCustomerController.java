@@ -12,8 +12,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.sorintlab.watzondata.backend.Contact;
 import it.sorintlab.watzondata.backend.Customer;
+import it.sorintlab.watzondata.frontend.APIContact;
 import it.sorintlab.watzondata.frontend.ApiCustomer;
+import it.sorintlab.watzondata.repository.ContactRepository;
 import it.sorintlab.watzondata.repository.CustomerRepository;
 
 @RestController
@@ -22,6 +25,16 @@ public class ApiCustomerController {
 
 	@Autowired
 	private CustomerRepository customerRepository;
+	
+	@Autowired
+	private ContactRepository contactRepository;
+	
+	/*@GetMapping(value = "/contacts")
+	public List<APIContact> listAllcontacts() {
+		ArrayList<Contact> temp = new ArrayList<>();
+		contactRepository.findAll().forEach(temp::add);
+		return temp.stream().map(c -> APIContact.fromBackend(c)).collect(Collectors.toList());
+	}*/
 	
 	@GetMapping(value = "/customers", params = "full")
 	public List<ApiCustomer> listFull() {
@@ -42,5 +55,17 @@ public class ApiCustomerController {
 		return ApiCustomer.fromBackend(customerRepository.findOne(id));
 	}
 		
+	@GetMapping(value = "/customers/{id}/products")
+	public List<String> listProductsByCustomer(@PathVariable("id") int id) {
+		Customer temp = customerRepository.findOne(id);
+		//return "/api/customers/{id}/products/{productsId}
+		return customerRepository.findOne(id).getProducts().stream().map(c -> new String("/api/customers/" + temp.getId() + "/products/" + c.getId())).collect(Collectors.toList());
+	}
+	
+	@GetMapping(value = "/customers/{id}/contacts")
+	public List<String> listContactByCustomer(@PathVariable("id") int id) {
+		Customer temp = customerRepository.findOne(id);
+		return customerRepository.findOne(id).getProducts().stream().map(c -> new String("/api/customers/" + temp.getId() + "/contacts/" + c.getId())).collect(Collectors.toList());
+	}
 
 }
