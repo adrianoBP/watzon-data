@@ -27,7 +27,7 @@ public class ApiCustomerController {
 	public List<ApiCustomer> listFull() {
 		ArrayList<Customer> temp = new ArrayList<>();
 		customerRepository.findAll().forEach(temp::add);
-		return temp.stream().map(c -> ApiCustomer.fromDomain(c)).collect(Collectors.toList());
+		return temp.stream().map(c -> ApiCustomer.fromBackend(c)).collect(Collectors.toList());
 	}
 	
 	@GetMapping(value = "/customers")
@@ -39,8 +39,8 @@ public class ApiCustomerController {
 	
 	@GetMapping(value = "/customers/{id}")
 	public ApiCustomer getCustomer(@PathVariable("id") int id){
-		return ApiCustomer.fromDomain(customerRepository.findOne(id));
+		return ApiCustomer.fromBackend(customerRepository.findOne(id));
 	}
-	
+		
 
 }

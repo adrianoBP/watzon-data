@@ -40,7 +40,7 @@ public class ApiCustomerProduct {
 		this.currency = currency;
 	}
 	
-	public static ApiCustomerProduct fromDomain(CustomerProduct domain){
+	public static ApiCustomerProduct fromBackend(CustomerProduct domain){
 		ApiCustomerProduct frontend = new ApiCustomerProduct();
 		frontend.price  = domain.getPrice();
 		frontend.currency = domain.getCurrency();

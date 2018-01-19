@@ -91,7 +91,7 @@ public class ApiCustomer {
 		this.products = products;
 	}
 	
-	public static ApiCustomer fromDomain(Customer domain){
+	public static ApiCustomer fromBackend(Customer domain){
 		ApiCustomer frontend = new ApiCustomer();
 		BeanUtils.copyProperties(domain, frontend,"products","city", "version");
 		frontend.city = domain.getCity().getName();
