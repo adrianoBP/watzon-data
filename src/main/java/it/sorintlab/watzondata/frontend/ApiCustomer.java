@@ -114,7 +114,7 @@ public class ApiCustomer {
 		domain.setWebSite(this.getWebsite());
 		domain.setTaxCode(this.getTaxCode());
 		//12345678 is a FAKE ID. 87654321 is a FAKE VERSION!!!
-		domain.setCity(new City(12345678, this.getCity(), this.getZip(), this.getProvinceState(), this.getCountry(), 87654321));
+		domain.setCity(new City(-12345678, this.getCity(), this.getZip(), this.getProvinceState(), this.getCountry(), -87654321));
 		return domain;
 	}
 }

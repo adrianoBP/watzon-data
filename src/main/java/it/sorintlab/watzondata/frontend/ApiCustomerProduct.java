@@ -4,10 +4,14 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Version;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import it.sorintlab.watzondata.backend.Customer;
 import it.sorintlab.watzondata.backend.CustomerProduct;
 import it.sorintlab.watzondata.backend.CustomerProductPk;
 import it.sorintlab.watzondata.backend.Product;
+import it.sorintlab.watzondata.repository.CustomerRepository;
+import it.sorintlab.watzondata.repository.ProductsRepository;
 
 public class ApiCustomerProduct {
 	private int customerId;
@@ -49,5 +53,21 @@ public class ApiCustomerProduct {
 		return frontend;
 	}
 
-
+	//Repository for toBackend
+	@Autowired
+	CustomerRepository customersRepo;
+	@Autowired
+	ProductsRepository productsRepo;
+	
+	
+	public CustomerProduct toBackend() {
+		CustomerProduct domain = new CustomerProduct();
+		domain.setCurrency(this.getCurrency());
+		domain.setPrice(this.getPrice());
+		//FAKE VERSION NUMBER
+		domain.setVersion(-87654321);
+		domain.setId(new CustomerProductPk(customersRepo.findOne(this.getCustomerId()), productsRepo.findOne(this.getProductId())));
+		
+		return domain;
+	}
 }
