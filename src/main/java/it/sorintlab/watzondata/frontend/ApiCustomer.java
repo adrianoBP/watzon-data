@@ -5,7 +5,9 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
 
+import it.sorintlab.watzondata.backend.City;
 import it.sorintlab.watzondata.backend.Customer;
+import it.sorintlab.watzondata.backend.Product;
 
 
 public class ApiCustomer {
@@ -103,6 +105,16 @@ public class ApiCustomer {
 		
 	}
 	
-	//public static String toUrl(Customer customer)
-
+	public Customer toBackend() {
+		Customer domain = new Customer();		
+		domain.setId(this.getId());
+		domain.setName(this.getName());
+		domain.setStreet(this.getStreet());
+		domain.setNote(this.getNote());
+		domain.setWebSite(this.getWebsite());
+		domain.setTaxCode(this.getTaxCode());
+		//12345678 is a FAKE ID. 87654321 is a FAKE VERSION!!!
+		domain.setCity(new City(-12345678, this.getCity(), this.getZip(), this.getProvinceState(), this.getCountry(), -87654321));
+		return domain;
+	}
 }
