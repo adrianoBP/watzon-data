@@ -9,7 +9,7 @@ import it.sorintlab.watzondata.domain.InfoReference;
 public class APIContact {
 	
 	private int id;
-	private int idCustomer;
+//	private int idCustomer;
 	private String name;
 	private String surname;
 	private LocalDate birthDate;
@@ -24,7 +24,7 @@ public class APIContact {
 			List<String> phone_numbers, List<String> emails, String role) {
 		super();
 		this.id = id;
-		this.idCustomer = idCustomer;
+//		this.idCustomer = idCustomer;
 		this.name = name;
 		this.surname = surname;
 		this.birthDate = birthDate;
@@ -59,13 +59,13 @@ public class APIContact {
 		this.id = id;
 	}
 
-	public int getIdCustomer() {
-		return idCustomer;
-	}
-
-	public void setIdCustomer(int idCustomer) {
-		this.idCustomer = idCustomer;
-	}
+//	public int getIdCustomer() {
+//		return idCustomer;
+//	}
+//
+//	public void setIdCustomer(int idCustomer) {
+//		this.idCustomer = idCustomer;
+//	}
 
 	public String getName() {
 		return name;

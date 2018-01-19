@@ -23,7 +23,7 @@ public class ApiProductController {
 		return productRepository.findAll();
 	}
 	
-	@GetMapping("products")
+	@GetMapping("/products")
 	public Iterable<String> getProduct(){
 		return StreamSupport.stream(productRepository.findAll().spliterator(), false)
 				.map(p -> ""+p.getId())
