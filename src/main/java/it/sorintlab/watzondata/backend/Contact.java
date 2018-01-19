@@ -1,5 +1,6 @@
 package it.sorintlab.watzondata.backend;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -39,7 +40,7 @@ public class Contact {
 	}
 	
 	@Column(name = "birthdate")
-	private LocalDate birthDate;
+	private Date  birthDate;
 
 	private String role;
 	@Version
@@ -70,11 +71,20 @@ public class Contact {
 		this.surname = surname;
 	}
 
-	public LocalDate getBirthDate() {
+
+	public List<InfoReference> getInfoReferences() {
+		return infoReferences;
+	}
+
+	public void setInfoReferences(List<InfoReference> infoReferences) {
+		this.infoReferences = infoReferences;
+	}
+
+	public Date getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(LocalDate birthDate) {
+	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
 
@@ -99,7 +109,9 @@ public class Contact {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((birthDate == null) ? 0 : birthDate.hashCode());
+		result = prime * result + ((customer == null) ? 0 : customer.hashCode());
 		result = prime * result + id;
+		result = prime * result + ((infoReferences == null) ? 0 : infoReferences.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((role == null) ? 0 : role.hashCode());
 		result = prime * result + ((surname == null) ? 0 : surname.hashCode());
@@ -121,7 +133,17 @@ public class Contact {
 				return false;
 		} else if (!birthDate.equals(other.birthDate))
 			return false;
+		if (customer == null) {
+			if (other.customer != null)
+				return false;
+		} else if (!customer.equals(other.customer))
+			return false;
 		if (id != other.id)
+			return false;
+		if (infoReferences == null) {
+			if (other.infoReferences != null)
+				return false;
+		} else if (!infoReferences.equals(other.infoReferences))
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -143,10 +165,7 @@ public class Contact {
 		return true;
 	}
 
-	public Object getReference() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	
 }

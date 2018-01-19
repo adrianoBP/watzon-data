@@ -1,5 +1,6 @@
 package it.sorintlab.watzondata.frontend;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -12,7 +13,7 @@ public class APIContact {
 //    private int idCustomer;
 	private String name;
 	private String surname;
-	private LocalDate birthDate;
+	private Date birthDate;
 	private List<String> phone_numbers;
 	private List<String> emails;
 	
@@ -20,7 +21,7 @@ public class APIContact {
 		
 	}
 	
-	public APIContact(int id, int idCustomer, String name, String surname, LocalDate birthDate,
+	public APIContact(int id, int idCustomer, String name, String surname, Date birthDate,
 			List<String> phone_numbers, List<String> emails, String role) {
 		super();
 		this.id = id;
@@ -83,12 +84,12 @@ public class APIContact {
 		this.surname = surname;
 	}
 
-	public LocalDate getBirthDate() {
+	public Date getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(LocalDate birthDate) {
-		this.birthDate = birthDate;
+	public void setBirthDate(Date date) {
+		this.birthDate = date;
 	}
 
 	public String getRole() {
@@ -106,7 +107,7 @@ public class APIContact {
 		contact.setName(domain.getName());
 		contact.setSurname(domain.getName());
 		contact.setBirthDate(domain.getBirthDate());
-		for(InfoReference ref : domain.getReference()) {
+		for(InfoReference ref : domain.getInfoReferences()) {
 			if(ref.getType() == InfoReference.Type.valueOf("phone_number"))
 				contact.emails.add(ref.getLink());
 			else if(ref.getType() == InfoReference.Type.email)

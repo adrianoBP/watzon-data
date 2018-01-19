@@ -65,7 +65,15 @@ public class ApiCustomerController {
 	@GetMapping(value = "/customers/{id}/contacts")
 	public List<String> listContactByCustomer(@PathVariable("id") int id) {
 		Customer temp = customerRepository.findOne(id);
-		return customerRepository.findOne(id).getProducts().stream().map(c -> new String("/api/customers/" + temp.getId() + "/contacts/" + c.getId())).collect(Collectors.toList());
+		return customerRepository.findOne(id).getContacts().stream().map(c -> new String("/api/customers/" + temp.getId() + "/contacts/" + c.getId())).collect(Collectors.toList());
 	}
 
+	@GetMapping(value = "/customers/{id}/contacts/{id2}")
+	public APIContact getContactByCustomer(@PathVariable("id") int id, @PathVariable("id2") int idC) {
+		Customer temp = customerRepository.findOne(id);
+		for (Contact tempC : temp.getContacts())
+			if (tempC.getId() == idC)
+				return APIContact.fromBackend(tempC);
+		return null;
+	}
 }
