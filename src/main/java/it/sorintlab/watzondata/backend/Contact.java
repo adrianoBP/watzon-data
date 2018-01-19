@@ -1,7 +1,6 @@
 package it.sorintlab.watzondata.backend;
 
 import java.sql.Date;
-import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Column;
