@@ -1,9 +1,7 @@
 package it.sorintlab.watzondata.controller;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +14,6 @@ import it.sorintlab.watzondata.backend.Contact;
 import it.sorintlab.watzondata.backend.Customer;
 import it.sorintlab.watzondata.frontend.APIContact;
 import it.sorintlab.watzondata.frontend.ApiCustomer;
-import it.sorintlab.watzondata.repository.ContactRepository;
 import it.sorintlab.watzondata.repository.CustomerRepository;
 
 @RestController
@@ -26,10 +23,11 @@ public class ApiCustomerController {
 	@Autowired
 	private CustomerRepository customerRepository;
 	
+	/*
 	@Autowired
 	private ContactRepository contactRepository;
 	
-	/*@GetMapping(value = "/contacts")
+	@GetMapping(value = "/contacts")
 	public List<APIContact> listAllcontacts() {
 		ArrayList<Contact> temp = new ArrayList<>();
 		contactRepository.findAll().forEach(temp::add);

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-import org.assertj.core.util.Lists;
+import org.apache.commons.collections4.IterableUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.sorintlab.watzondata.backend.Customer;
 import it.sorintlab.watzondata.backend.CustomerProduct;
 import it.sorintlab.watzondata.backend.Product;
 import it.sorintlab.watzondata.frontend.APICustomerPrice;
@@ -46,7 +45,7 @@ public class ApiProductController {
 	@GetMapping(value = "/products", params="desc")
 	public Iterable<Product> getProductsDesc(){
 		Iterable<Product> tmpIter = productRepository.findAll();
-		List<Product> tmpList = Lists.newArrayList(tmpIter);
+		List<Product> tmpList = IterableUtils.toList(tmpIter);
 		tmpList.sort(Comparator.comparingInt(Product::getId).reversed());
 		tmpIter = tmpList;
 		return tmpList;
@@ -55,7 +54,7 @@ public class ApiProductController {
 	@GetMapping(value = "/products", params="asc")
 	public Iterable<Product> getProductsAsc(){
 		Iterable<Product> tmpIter = productRepository.findAll();
-		List<Product> tmpList = Lists.newArrayList(tmpIter);
+		List<Product> tmpList = IterableUtils.toList(tmpIter);
 		tmpList.sort(Comparator.comparingInt(Product::getId));
 		tmpIter = tmpList;
 		return tmpList;
@@ -96,6 +95,32 @@ public class ApiProductController {
 		customerList.sort(Comparator.comparingDouble(APICustomerPrice::getPrice));
 		return customerList;
 	}
+	/*
+	 @GetMapping(value = "/products/{id}/customers", params= "asc")
+	public Page<APICustomerPrice> getCustomersByProductAsc(@PathVariable("id") int id, @RequestParam("name") String name, Pageable paging){
+		List<APICustomerPrice> customerList = new ArrayList<APICustomerPrice>();
+		
+		Sort sort = new Sort(new Order(Direction.ASC, "price"));
+		Page<CustomerProduct> products = customerProductRepository.findByProduct/*Id(id, paging);
+		products.map(prod -> prod.getCustomer());
+		/*customerRepository.findAll(sort);/*.forEach(cust -> { 
+			
+				ApiCustomerProduct customerProduct = null;
+				for(CustomerProduct cp : cust.getProducts())
+				{
+					if(cp.getId().getProduct().getId() == id)
+					{
+						customerProduct = ApiCustomerProduct.fromBackend(cp);
+						break;
+					}
+				}
+				if(customerProduct!=null)
+					customerList.add(APICustomerPrice.fromApiCustomer(ApiCustomer.fromBackend(cust), customerProduct ));
+			});
+		//customerList.sort(Comparator.comparingDouble(APICustomerPrice::getPrice));
+		return customerList;
+	}
+	 */
 	
 	@GetMapping(value = "/products/{id}/customers", params= "desc")
 	public List<APICustomerPrice> getCustomersByProductDesc(@PathVariable("id") int id){
@@ -124,3 +149,4 @@ public class ApiProductController {
 //	}
 	
 }
+
