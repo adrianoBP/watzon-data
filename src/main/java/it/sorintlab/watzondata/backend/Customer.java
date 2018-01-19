@@ -35,7 +35,24 @@ public class Customer {
 	@Version
 	private int version;
 	
-//	private List<Contact> contacts;
+	@OneToMany(mappedBy = "customer")
+	private List<Contact> contacts;
+
+	public String getWebsite() {
+		return website;
+	}
+
+	public void setWebsite(String website) {
+		this.website = website;
+	}
+
+	public List<Contact> getContacts() {
+		return contacts;
+	}
+
+	public void setContacts(List<Contact> contacts) {
+		this.contacts = contacts;
+	}
 
 	public int getId() {
 		return id;
@@ -114,6 +131,7 @@ public class Customer {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((city == null) ? 0 : city.hashCode());
+		//result = prime * result + ((contacts == null) ? 0 : contacts.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((note == null) ? 0 : note.hashCode());
@@ -138,6 +156,11 @@ public class Customer {
 			if (other.city != null)
 				return false;
 		} else if (!city.equals(other.city))
+			return false;
+		if (contacts == null) {
+			if (other.contacts != null)
+				return false;
+		} else if (!contacts.equals(other.contacts))
 			return false;
 		if (id != other.id)
 			return false;

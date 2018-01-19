@@ -1,28 +1,47 @@
 package it.sorintlab.watzondata.backend;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.persistence.Version;
-
+import javax.persistence.JoinColumn;
 @Entity
+@Table(name="contact")
 public class Contact {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	private int idCustomer;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_customer")
+	private Customer customer;
 	private String name;
 	private String surname;
-	private LocalDate birthDate;
-
+	
 	@OneToMany(mappedBy = "contact")
-	private List<InfoReference> reference; // mail e telephone
+	private List<InfoReference> infoReferences;
+	
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+	
+	@Column(name = "birthdate")
+	private Date  birthDate;
+
 	private String role;
 	@Version
 	private int version;
@@ -35,13 +54,6 @@ public class Contact {
 		this.id = id;
 	}
 
-	public int getIdCustomer() {
-		return idCustomer;
-	}
-
-	public void setIdCustomer(int idCustomer) {
-		this.idCustomer = idCustomer;
-	}
 
 	public String getName() {
 		return name;
@@ -59,20 +71,21 @@ public class Contact {
 		this.surname = surname;
 	}
 
-	public LocalDate getBirthDate() {
+
+	public List<InfoReference> getInfoReferences() {
+		return infoReferences;
+	}
+
+	public void setInfoReferences(List<InfoReference> infoReferences) {
+		this.infoReferences = infoReferences;
+	}
+
+	public Date getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(LocalDate birthDate) {
+	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
-	}
-
-	public List<InfoReference> getReference() {
-		return reference;
-	}
-
-	public void setReference(List<InfoReference> reference) {
-		this.reference = reference;
 	}
 
 	public String getRole() {
@@ -96,10 +109,10 @@ public class Contact {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((birthDate == null) ? 0 : birthDate.hashCode());
+		result = prime * result + ((customer == null) ? 0 : customer.hashCode());
 		result = prime * result + id;
-		result = prime * result + idCustomer;
+		result = prime * result + ((infoReferences == null) ? 0 : infoReferences.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((reference == null) ? 0 : reference.hashCode());
 		result = prime * result + ((role == null) ? 0 : role.hashCode());
 		result = prime * result + ((surname == null) ? 0 : surname.hashCode());
 		result = prime * result + version;
@@ -120,19 +133,22 @@ public class Contact {
 				return false;
 		} else if (!birthDate.equals(other.birthDate))
 			return false;
+		if (customer == null) {
+			if (other.customer != null)
+				return false;
+		} else if (!customer.equals(other.customer))
+			return false;
 		if (id != other.id)
 			return false;
-		if (idCustomer != other.idCustomer)
+		if (infoReferences == null) {
+			if (other.infoReferences != null)
+				return false;
+		} else if (!infoReferences.equals(other.infoReferences))
 			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
-			return false;
-		if (reference == null) {
-			if (other.reference != null)
-				return false;
-		} else if (!reference.equals(other.reference))
 			return false;
 		if (role == null) {
 			if (other.role != null)
@@ -148,6 +164,8 @@ public class Contact {
 			return false;
 		return true;
 	}
+
+
 
 	
 }

@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Version;
+import javax.persistence.JoinColumn;
+
 
 @Entity
 public class InfoReference {
@@ -22,6 +24,7 @@ public class InfoReference {
 	private Type type;
 
 	@ManyToOne
+	@JoinColumn(name="id_contact")
 	private Contact contact;
 	@Version
 	private int version;

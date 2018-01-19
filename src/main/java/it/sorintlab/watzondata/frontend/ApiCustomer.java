@@ -5,9 +5,8 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
 
-import it.sorintlab.watzondata.backend.City;
+import it.sorintlab.watzondata.backend.Contact;
 import it.sorintlab.watzondata.backend.Customer;
-import it.sorintlab.watzondata.backend.Product;
 
 
 public class ApiCustomer {
@@ -25,6 +24,7 @@ public class ApiCustomer {
 	private String website;
 	private String taxCode;
 	private List<Integer> products;
+	private List<APIContact> contacts;
 	
 	public int getId() {
 		return id;
@@ -101,20 +101,22 @@ public class ApiCustomer {
 		frontend.provinceState= domain.getCity().getProvince_state();
 		frontend.zip = domain.getCity().getZip();
 		frontend.products = domain.getProducts().stream().map(prod -> prod.getId().getProduct().getId()).collect(Collectors.toList());
+		frontend.setContacts(domain.getContacts().stream().map(cont -> APIContact.fromBackend(cont)).collect(Collectors.toList()));
 		return frontend;
 		
 	}
 	
-	public Customer toBackend() {
-		Customer domain = new Customer();		
-		domain.setId(this.getId());
-		domain.setName(this.getName());
-		domain.setStreet(this.getStreet());
-		domain.setNote(this.getNote());
-		domain.setWebSite(this.getWebsite());
-		domain.setTaxCode(this.getTaxCode());
-		//12345678 is a FAKE ID. 87654321 is a FAKE VERSION!!!
-		domain.setCity(new City(-12345678, this.getCity(), this.getZip(), this.getProvinceState(), this.getCountry(), -87654321));
-		return domain;
+	public static List<String> getAllProducts(Customer findProd){
+		
+		return null;
 	}
+	public List<APIContact> getContacts() {
+		return contacts;
+	}
+	public void setContacts(List<APIContact> contacts) {
+		this.contacts = contacts;
+	}
+	
+	//public static String toUrl(Customer customer)
+
 }
