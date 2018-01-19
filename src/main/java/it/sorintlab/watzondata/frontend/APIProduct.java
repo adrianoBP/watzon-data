@@ -1,6 +1,6 @@
 package it.sorintlab.watzondata.frontend;
 
-import it.sorintlab.watzondata.domain.Product;
+import it.sorintlab.watzondata.backend.Product;
 
 public class APIProduct {
 

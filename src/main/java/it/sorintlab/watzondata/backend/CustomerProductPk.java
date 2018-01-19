@@ -1,4 +1,4 @@
-package it.sorintlab.watzondata.domain;
+package it.sorintlab.watzondata.backend;
 
 import java.io.Serializable;
 

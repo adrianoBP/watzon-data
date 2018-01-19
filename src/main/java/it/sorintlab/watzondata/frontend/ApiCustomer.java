@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
 
-import it.sorintlab.watzondata.domain.Customer;
+import it.sorintlab.watzondata.backend.Customer;
 
 
 public class ApiCustomer {

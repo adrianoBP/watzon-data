@@ -7,8 +7,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
 
-import it.sorintlab.watzondata.domain.Customer;
-import it.sorintlab.watzondata.domain.Product;
+import it.sorintlab.watzondata.backend.Customer;
+import it.sorintlab.watzondata.backend.Product;
 
 @RepositoryRestResource
 public interface ProductsRepository extends PagingAndSortingRepository<Product, Integer> {

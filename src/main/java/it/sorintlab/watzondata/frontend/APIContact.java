@@ -3,8 +3,8 @@ package it.sorintlab.watzondata.frontend;
 import java.time.LocalDate;
 import java.util.List;
 
-import it.sorintlab.watzondata.domain.Contact;
-import it.sorintlab.watzondata.domain.InfoReference;
+import it.sorintlab.watzondata.backend.Contact;
+import it.sorintlab.watzondata.backend.InfoReference;
 
 public class APIContact {
 	
