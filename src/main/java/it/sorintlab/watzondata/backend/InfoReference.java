@@ -24,7 +24,7 @@ public class InfoReference {
 	private Type type;
 
 	@ManyToOne
-	@JoinColumn(name="contact_id")
+	@JoinColumn(name="id_contact")
 	private Contact contact;
 	@Version
 	private int version;

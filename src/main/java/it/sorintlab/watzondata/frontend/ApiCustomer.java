@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
 
+import it.sorintlab.watzondata.backend.Contact;
 import it.sorintlab.watzondata.backend.Customer;
 
 
@@ -23,7 +24,7 @@ public class ApiCustomer {
 	private String website;
 	private String taxCode;
 	private List<Integer> products;
-	private List<Integer> contacts;
+	private List<APIContact> contacts;
 	
 	public int getId() {
 		return id;
@@ -100,7 +101,7 @@ public class ApiCustomer {
 		frontend.provinceState= domain.getCity().getProvince_state();
 		frontend.zip = domain.getCity().getZip();
 		frontend.products = domain.getProducts().stream().map(prod -> prod.getId().getProduct().getId()).collect(Collectors.toList());
-		frontend.contacts = domain.getContacts().stream().map(cont -> cont.getId()).collect(Collectors.toList());
+		frontend.setContacts(domain.getContacts().stream().map(cont -> APIContact.fromBackend(cont)).collect(Collectors.toList()));
 		return frontend;
 		
 	}
@@ -108,6 +109,12 @@ public class ApiCustomer {
 	public static List<String> getAllProducts(Customer findProd){
 		
 		return null;
+	}
+	public List<APIContact> getContacts() {
+		return contacts;
+	}
+	public void setContacts(List<APIContact> contacts) {
+		this.contacts = contacts;
 	}
 	
 	//public static String toUrl(Customer customer)
