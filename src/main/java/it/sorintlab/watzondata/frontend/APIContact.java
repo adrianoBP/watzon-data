@@ -1,4 +1,4 @@
-package it.sorintlab.watzondata.model;
+package it.sorintlab.watzondata.frontend;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -99,7 +99,7 @@ public class APIContact {
 		this.role = role;
 	}
 
-	public static APIContact fromDomain(Contact domain) {
+	public static APIContact fromBackend(Contact domain) {
 		APIContact contact = new APIContact();
 		
 		contact.setId(domain.getId());
