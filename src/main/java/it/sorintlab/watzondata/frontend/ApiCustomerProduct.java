@@ -52,22 +52,4 @@ public class ApiCustomerProduct {
 		frontend.productId = domain.getId().getProduct().getId();
 		return frontend;
 	}
-
-	//Repository for toBackend
-	@Autowired
-	CustomerRepository customersRepo;
-	@Autowired
-	ProductsRepository productsRepo;
-	
-	
-	public CustomerProduct toBackend() {
-		CustomerProduct domain = new CustomerProduct();
-		domain.setCurrency(this.getCurrency());
-		domain.setPrice(this.getPrice());
-		//FAKE VERSION NUMBER
-		domain.setVersion(-87654321);
-		domain.setId(new CustomerProductPk(customersRepo.findOne(this.getCustomerId()), productsRepo.findOne(this.getProductId())));
-		
-		return domain;
-	}
 }
