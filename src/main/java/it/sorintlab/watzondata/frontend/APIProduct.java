@@ -1,6 +1,6 @@
-package it.sorintlab.watzondata.model;
+package it.sorintlab.watzondata.frontend;
 
-import it.sorintlab.watzondata.domain.Product;
+import it.sorintlab.watzondata.backend.Product;
 
 public class APIProduct {
 
@@ -52,7 +52,7 @@ public class APIProduct {
 	}
 	
 
-	public static APIProduct fromDomain(Product domain) {
+	public static APIProduct fromBackend(Product domain) {
 		APIProduct product = new APIProduct();
 		
 		product.setId(domain.getId());
@@ -63,7 +63,7 @@ public class APIProduct {
 		return product;
 	}
 	
-	public Product toDomain() {
+	public Product toBackend() {
 		Product domain = new Product();
 		
 		domain.setId(this.getId());

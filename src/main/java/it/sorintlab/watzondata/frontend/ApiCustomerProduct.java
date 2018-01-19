@@ -4,10 +4,10 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Version;
 
-import it.sorintlab.watzondata.domain.Customer;
-import it.sorintlab.watzondata.domain.CustomerProduct;
-import it.sorintlab.watzondata.domain.CustomerProductPk;
-import it.sorintlab.watzondata.domain.Product;
+import it.sorintlab.watzondata.backend.Customer;
+import it.sorintlab.watzondata.backend.CustomerProduct;
+import it.sorintlab.watzondata.backend.CustomerProductPk;
+import it.sorintlab.watzondata.backend.Product;
 
 public class ApiCustomerProduct {
 	private int customerId;

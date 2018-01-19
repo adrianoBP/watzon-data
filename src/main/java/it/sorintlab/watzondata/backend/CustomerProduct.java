@@ -1,4 +1,4 @@
-package it.sorintlab.watzondata.domain;
+package it.sorintlab.watzondata.backend;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;

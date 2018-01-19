@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.sorintlab.watzondata.domain.Product;
+import it.sorintlab.watzondata.backend.Product;
 import it.sorintlab.watzondata.repository.ProductsRepository;
 
 @RestController
@@ -23,7 +23,7 @@ public class ApiProductController {
 		return productRepository.findAll();
 	}
 	
-	@GetMapping("products")
+	@GetMapping("/products")
 	public Iterable<String> getProduct(){
 		return StreamSupport.stream(productRepository.findAll().spliterator(), false)
 				.map(p -> ""+p.getId())

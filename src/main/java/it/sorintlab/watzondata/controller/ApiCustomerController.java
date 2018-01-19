@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
-import it.sorintlab.watzondata.domain.Customer;
+import it.sorintlab.watzondata.backend.Customer;
 import it.sorintlab.watzondata.frontend.ApiCustomer;
 import it.sorintlab.watzondata.repository.CustomerRepository;
 
