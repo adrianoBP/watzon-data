@@ -143,5 +143,10 @@ public class Contact {
 		return true;
 	}
 
+	public Object getReference() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }
