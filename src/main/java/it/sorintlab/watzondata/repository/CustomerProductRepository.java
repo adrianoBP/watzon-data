@@ -7,7 +7,7 @@ import it.sorintlab.watzondata.backend.CustomerProduct;
 import it.sorintlab.watzondata.backend.CustomerProductPk;
 
 @RepositoryRestResource
-public interface ProductRepository extends PagingAndSortingRepository<CustomerProduct, CustomerProductPk> {
+public interface CustomerProductRepository extends PagingAndSortingRepository<CustomerProduct, CustomerProductPk> {
 
 	
 }
