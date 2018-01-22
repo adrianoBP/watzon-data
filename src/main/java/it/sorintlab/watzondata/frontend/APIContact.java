@@ -1,6 +1,7 @@
 package it.sorintlab.watzondata.frontend;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import it.sorintlab.watzondata.backend.Contact;
@@ -12,7 +13,7 @@ public class APIContact {
 //    private int idCustomer;
 	private String name;
 	private String surname;
-	private Date birthDate;
+	private LocalDate birthDate;
 	private List<String> phone_numbers;
 	private List<String> emails;
 	
@@ -20,7 +21,7 @@ public class APIContact {
 		
 	}
 	
-	public APIContact(int id, int idCustomer, String name, String surname, Date birthDate,
+	public APIContact(int id, int idCustomer, String name, String surname, LocalDate birthDate,
 			List<String> phone_numbers, List<String> emails, String role) {
 		super();
 		this.id = id;
@@ -83,11 +84,11 @@ public class APIContact {
 		this.surname = surname;
 	}
 
-	public Date getBirthDate() {
+	public LocalDate getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(Date date) {
+	public void setBirthDate(LocalDate date) {
 		this.birthDate = date;
 	}
 
@@ -116,6 +117,4 @@ public class APIContact {
 		
 		return contact;
 	}
-	
-
 }

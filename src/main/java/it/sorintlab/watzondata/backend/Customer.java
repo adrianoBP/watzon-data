@@ -53,6 +53,10 @@ public class Customer {
 	public void setContacts(List<Contact> contacts) {
 		this.contacts = contacts;
 	}
+	
+	public void setNewContact(Contact contact) {
+		this.contacts.add(contact);
+	}
 
 	public int getId() {
 		return id;
