@@ -67,6 +67,19 @@ public class ApiProductController {
 				.collect(Collectors.toList());
 	}
 	
+//	@GetMapping("/products/searchlike/{val}")
+//	public Iterable<String> getProductSearchlike(@PathVariable("val") String val){
+//		List<Product> products = new ArrayList<Product>();
+//		productRepository.findAll().forEach(prod -> {
+//			if(prod.getName().contains(val))
+//				products.add(prod);
+//		});
+//		return producst
+//		});
+//		
+//	}
+//	
+	
 	@PostMapping("/products")
 	public Product addProduct(@RequestBody Product product) {
 		return productRepository.save(product);
