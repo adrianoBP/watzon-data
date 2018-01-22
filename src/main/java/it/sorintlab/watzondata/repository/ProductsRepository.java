@@ -1,5 +1,7 @@
 package it.sorintlab.watzondata.repository;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -14,7 +16,7 @@ import it.sorintlab.watzondata.backend.Product;
 public interface ProductsRepository extends PagingAndSortingRepository<Product, Integer> {
 
 	@RestResource(path="search", rel="search")
-	public Page<Customer> findByName(@Param("name") String name, Pageable paging);
+	public List<Product> findByName(@Param("name") String name);
 	@RestResource(path="searchlike", rel="searchlike")
-	public Page<Customer> findByNameContaining(@Param("name") String name, Pageable paging);
+	public List<Product> findByNameContaining(@Param("name") String name);
 }
