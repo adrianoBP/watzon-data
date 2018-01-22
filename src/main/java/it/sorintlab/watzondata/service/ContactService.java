@@ -1,5 +1,6 @@
 package it.sorintlab.watzondata.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.sorintlab.watzondata.backend.Contact;
@@ -9,6 +10,7 @@ import it.sorintlab.watzondata.repository.ContactRepository;
 @Service
 public class ContactService {
 
+	@Autowired
 	private ContactRepository repo;
 	
 	public Contact toBackend(APIContact frontend, int id) {
