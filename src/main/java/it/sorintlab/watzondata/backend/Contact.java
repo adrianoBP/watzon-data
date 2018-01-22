@@ -1,6 +1,5 @@
 package it.sorintlab.watzondata.backend;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -9,28 +8,36 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
-import javax.persistence.JoinColumn;
+
 @Entity
-@Table(name="contact")
+@Table(name = "contact")
 public class Contact {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-	
+	private Integer id;
+
 	@ManyToOne
 	@JoinColumn(name = "id_customer")
 	private Customer customer;
+
 	private String name;
 	private String surname;
-	
+	private String role;
+	@Column(name = "birthdate")
+	private LocalDate birthDate;
+
 	@OneToMany(mappedBy = "contact")
 	private List<InfoReference> infoReferences;
-	
+
+	@Version
+	private int version;
+
 	public Customer getCustomer() {
 		return customer;
 	}
@@ -38,22 +45,14 @@ public class Contact {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-	
-	@Column(name = "birthdate")
-	private LocalDate  birthDate;
 
-	private String role;
-	@Version
-	private int version;
-
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
-
 
 	public String getName() {
 		return name;
@@ -70,7 +69,6 @@ public class Contact {
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
-
 
 	public List<InfoReference> getInfoReferences() {
 		return infoReferences;
@@ -110,7 +108,7 @@ public class Contact {
 		int result = 1;
 		result = prime * result + ((birthDate == null) ? 0 : birthDate.hashCode());
 		result = prime * result + ((customer == null) ? 0 : customer.hashCode());
-		result = prime * result + id;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((infoReferences == null) ? 0 : infoReferences.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((role == null) ? 0 : role.hashCode());
@@ -138,7 +136,10 @@ public class Contact {
 				return false;
 		} else if (!customer.equals(other.customer))
 			return false;
-		if (id != other.id)
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
 			return false;
 		if (infoReferences == null) {
 			if (other.infoReferences != null)
@@ -165,7 +166,4 @@ public class Contact {
 		return true;
 	}
 
-
-
-	
 }
