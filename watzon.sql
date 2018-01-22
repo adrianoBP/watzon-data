@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `note` text NOT NULL,
   `website` varchar(255) NOT NULL,
   `taxcode` varchar(255) NOT NULL,
-  `deleted` tinyint(1) NOT NULL,
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
   `version` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `city` (`city_id`)
@@ -126,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `code` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` text NOT NULL,
-  `deleted` tinyint(1) NOT NULL,
+  `deleted` tinyint(1) NOT NULL DEFAULT 0,
   `version` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
