@@ -21,7 +21,7 @@ public class ContactService {
 		if (backend.getRole() == null)
 			backend.setRole(oldContact.getRole());
 		if (backend.getSurname() == null)
-			backend.setSurname((oldContact.getSurname());
+			backend.setSurname(oldContact.getSurname());
 		backend.setCustomer(oldContact.getCustomer());
 		backend.setId(id);
 		backend.setInfoReferences(oldContact.getInfoReferences());
