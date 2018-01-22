@@ -1,6 +1,7 @@
 package it.sorintlab.watzondata.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import it.sorintlab.watzondata.backend.CustomerProduct;
 import it.sorintlab.watzondata.backend.CustomerProductPk;
@@ -9,6 +10,7 @@ import it.sorintlab.watzondata.repository.CustomerProductRepository;
 import it.sorintlab.watzondata.repository.CustomerRepository;
 import it.sorintlab.watzondata.repository.ProductsRepository;
 
+@Service
 public class CustomerProductService {
 
 	//Repository for toBackend

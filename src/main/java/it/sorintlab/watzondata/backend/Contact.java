@@ -1,6 +1,7 @@
 package it.sorintlab.watzondata.backend;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -39,7 +40,7 @@ public class Contact {
 	}
 	
 	@Column(name = "birthdate")
-	private Date  birthDate;
+	private LocalDate  birthDate;
 
 	private String role;
 	@Version
@@ -79,12 +80,12 @@ public class Contact {
 		this.infoReferences = infoReferences;
 	}
 
-	public Date getBirthDate() {
+	public LocalDate getBirthDate() {
 		return birthDate;
 	}
 
-	public void setBirthDate(Date birthDate) {
-		this.birthDate = birthDate;
+	public void setBirthDate(LocalDate localDate) {
+		this.birthDate = localDate;
 	}
 
 	public String getRole() {
