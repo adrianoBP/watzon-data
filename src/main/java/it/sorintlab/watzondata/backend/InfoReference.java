@@ -1,4 +1,4 @@
-package it.sorintlab.watzondata.domain;
+package it.sorintlab.watzondata.backend;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,17 +6,25 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Version;
+import javax.persistence.JoinColumn;
+
 
 @Entity
 public class InfoReference {
 
+	public static enum Type{
+		phone_number,
+		email
+	}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private String link;
-	private String type;
+	private Type type;
 
 	@ManyToOne
+	@JoinColumn(name="id_contact")
 	private Contact contact;
 	@Version
 	private int version;
@@ -37,11 +45,11 @@ public class InfoReference {
 		this.link = link;
 	}
 
-	public String getType() {
+	public Type getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(Type type) {
 		this.type = type;
 	}
 

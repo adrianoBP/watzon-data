@@ -1,4 +1,4 @@
-package it.sorintlab.watzondata.domain;
+package it.sorintlab.watzondata.backend;
 
 import java.io.Serializable;
 
@@ -70,4 +70,15 @@ public class CustomerProductPk implements Serializable {
 		return true;
 	}
 
+	public CustomerProductPk(Customer customer, Product product) {
+		super();
+		this.customer = customer;
+		this.product = product;
+	}
+
+	public CustomerProductPk() {
+		super();
+	}
+	
+	
 }

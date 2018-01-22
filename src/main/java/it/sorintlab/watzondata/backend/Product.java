@@ -1,15 +1,17 @@
-package it.sorintlab.watzondata.domain;
+package it.sorintlab.watzondata.backend;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Version;
 
-import org.hibernate.annotations.Table;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 @Entity
+@Where(clause = "deleted<>1")
+@SQLDelete(sql = "UPDATE product p SET p.deleted=1 WHERE p.id=?")
 public class Product {
 
 	@Id

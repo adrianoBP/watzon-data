@@ -1,4 +1,4 @@
-package it.sorintlab.watzondata.domain;
+package it.sorintlab.watzondata.backend;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -115,7 +115,18 @@ public class City {
 			return false;
 		return true;
 	}
-	
-	
 
+	public City(int id, String name, String zip, String provinceState, String country, int version) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.zip = zip;
+		this.provinceState = provinceState;
+		this.country = country;
+		this.version = version;
+	}
+	
+	public City() {
+		super();
+	}
 }

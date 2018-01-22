@@ -9,4 +9,6 @@ public class WatzonDataApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(WatzonDataApplication.class, args);
 	}
+	
+	
 }
